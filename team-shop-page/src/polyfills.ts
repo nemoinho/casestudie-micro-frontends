@@ -61,3 +61,4 @@
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+import '@webcomponents/custom-elements/custom-elements.min';
