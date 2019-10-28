@@ -13,3 +13,9 @@ services:
       context: team-shop-page
     ports:
       - "6500:80"
+  team-product-details:
+    image: demo-team-product-details
+    build:
+      context: team-product-details
+    ports:
+      - "6501:80"
