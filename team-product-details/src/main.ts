@@ -9,4 +9,13 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
+  .then(() => {
+    if (!environment.production) {
+      ['http://localhost:6503/main.js', 'http://localhost:6502/main.js'].forEach(s => {
+        const t = document.createElement('script');
+        t.src = s;
+        document.body.appendChild(t);
+      });
+    }
+  })
   .catch(err => console.error(err));

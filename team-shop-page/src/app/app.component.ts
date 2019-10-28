@@ -17,18 +17,15 @@ import {Component, OnInit} from '@angular/core';
 export class AppComponent implements OnInit {
   private config = {
     'team-product-details': {
-      url: 'http://localhost:6501',
-      paths: ['runtime-es2015', 'main-es2015'],
+      url: 'http://localhost:6501/main.js',
       loaded: false
     },
     'team-product-recommendations': {
-      url: 'http://localhost:6502',
-      paths: ['runtime-es2015', 'main-es2015'],
+      url: 'http://localhost:6502/main.js',
       loaded: false
     },
     'team-shopping-cart': {
-      url: 'http://localhost:6503',
-      paths: ['runtime-es2015', 'main-es2015'],
+      url: 'http://localhost:6503/main.js',
       loaded: false
     }
   };
@@ -43,30 +40,19 @@ export class AppComponent implements OnInit {
   }
 
   load() {
-    if (this.queue.length === 0) {
-      return;
-    }
-    const name = this.queue.shift();
-    const configItem = this.config[name];
-    if (!configItem) {
-      this.load();
-      return;
-    }
-
-    // ugly hack to prevent angular-versions from overwriting each other…
-    // @ts-ignore
-    delete window.webpackJsonp;
-
-    configItem.loaded = true;
     const content = document.getElementById('content');
-    Promise.all(configItem.paths.map(path => new Promise(resolve => {
+    this.queue.forEach(name => {
+      const configItem = this.config[name];
+      if (!configItem) {
+        return;
+      }
+      configItem.loaded = true;
       const script = document.createElement('script');
-      script.src = configItem.url + '/' + path + '.js';
+      script.src = configItem.url;
       script.onerror = (e) => console.error('Failed to load', e);
-      script.onload = () => resolve();
-      document.body.appendChild(script);
-    }))).then(() => setTimeout(() => this.load(), 0));
-    const elem = document.createElement(name);
-    content.appendChild(elem);
+      content.appendChild(script);
+      const elem = document.createElement(name);
+      content.appendChild(elem);
+    });
   }
 }

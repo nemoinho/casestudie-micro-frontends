@@ -4,7 +4,7 @@ COPY package.json package-lock.json /app/
 RUN npm i
 COPY tsconfig.json tsconfig.app.json angular.json /app/
 COPY src /app/src
-RUN npm run -- ng build --prod --output-hashing none --vendor-chunk false
+RUN npm run -- ng build --prod --output-hashing none --single-bundle true
 
 FROM nginx:alpine
 COPY --from=builder /app/dist/team-product-details /usr/share/nginx/html
