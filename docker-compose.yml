@@ -19,3 +19,15 @@ services:
       context: team-product-details
     ports:
       - "6501:80"
+  team-product-recommendations:
+    image: demo-team-product-recommendations
+    build:
+      context: team-product-recommendations
+    ports:
+      - "6502:80"
+  team-shopping-cart:
+    image: demo-team-shopping-cart
+    build:
+      context: team-shopping-cart
+    ports:
+      - "6503:80"
