@@ -8,3 +8,4 @@ RUN npm run -- ng build --prod --output-hashing none --vendor-chunk false
 
 FROM nginx:alpine
 COPY --from=builder /app/dist/team-shop-page /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
