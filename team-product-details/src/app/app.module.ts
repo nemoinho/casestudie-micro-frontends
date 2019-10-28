@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {EmptyComponent} from './components/empty.component';
 import {createCustomElement} from '@angular/elements';
+import {DetailComponent} from './components/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmptyComponent
+    EmptyComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,

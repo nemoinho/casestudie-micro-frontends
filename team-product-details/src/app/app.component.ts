@@ -3,11 +3,7 @@ import {Router} from '@angular/router';
 import {environment} from '../environments/environment';
 
 @Component({
-  template: `
-      <div style="border: 3px dashed blue; padding: 10px">
-        <router-outlet></router-outlet>
-      </div>
-  `,
+  template: `<router-outlet></router-outlet>`,
   encapsulation: ViewEncapsulation.Emulated
 })
 export class AppComponent implements OnInit {

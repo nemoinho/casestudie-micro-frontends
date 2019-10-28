@@ -4,7 +4,14 @@ import {Component, OnInit} from '@angular/core';
   selector: 'app-root',
   template: `
       <h1>Demo-Shop</h1>
-      <div id="content"></div>
+      <div style="display: flex; max-width: 100em; margin: auto; justify-content: center">
+        <ul style="min-width: 150px">
+          <li><a routerLink="">Start</a></li>
+          <li><a routerLink="/team-product-details">Show product</a></li>
+          <li><a routerLink="/team-shopping-cart">Show cart</a></li>
+        </ul>
+        <div id="content"></div>
+      </div>
   `
 })
 export class AppComponent implements OnInit {
