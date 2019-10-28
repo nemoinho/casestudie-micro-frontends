@@ -6,4 +6,10 @@ services:
     build:
       context: team-assets
     ports:
-      - 5100:80
+      - "6100:80"
+  team-shop-page:
+    image: demo-team-shop-page
+    build:
+      context: team-shop-page
+    ports:
+      - "6500:80"
