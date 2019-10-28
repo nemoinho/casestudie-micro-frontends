@@ -1,0 +1,9 @@
+version: "2.4"
+
+services:
+  team-assets:
+    image: demo-team-assets
+    build:
+      context: team-assets
+    ports:
+      - 5100:80
